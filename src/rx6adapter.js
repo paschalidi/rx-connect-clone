@@ -1,9 +1,5 @@
-import { Observable, Subject, BehaviorSubject, ReplaySubject } from "rxjs-v5";
-import "rxjs-v5/add/observable/of";
-import "rxjs-v5/add/observable/interval";
-import "rxjs-v5/add/observable/merge";
-import { scan, debounce, map, pluck, take } from "rxjs-v5/operators";
-import ObservableSymbol from "symbol-observable";
+import { Observable, Subject, BehaviorSubject, ReplaySubject, isObservable, of, merge, interval } from "rxjs";
+import { scan, map, debounce, pluck, take } from "rxjs/operators";
 
 const handler = {
   get: function(obj, key) {
@@ -12,18 +8,18 @@ const handler = {
 };
 
 const ObservableProxy = new Proxy({
+  merge,
   scan,
-  debounce,
+  interval,
   map,
+  debounce,
   pluck,
   take,
-  interval: Observable.interval,
-  merge: Observable.merge,
-  of: Observable.of
+  of
 }, handler);
 
 export default {
-
+  
     Rx: {
       Observable: ObservableProxy,
       Subject,
@@ -36,7 +32,7 @@ export default {
     },
 
     isObservable(obj) {
-        return obj && typeof obj[ObservableSymbol] === 'function';
+        return obj && isObservable(obj);
     },
 
     unsubscribe(subscription) {
