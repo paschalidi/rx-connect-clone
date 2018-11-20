@@ -1,5 +1,5 @@
 {
-  "name": "rx-connect",
+  "name": "rx-connect-clone",
   "version": "0.0.0",
   "description": "Connect React components to Redux store with RxJS-based HOC",
   "main": "./lib/index.js",
@@ -24,16 +24,6 @@
     "rx",
     "rxjs"
   ],
-  "author": "Sergei Egorov <bsideup@gmail.com>",
-  "homepage": "https://github.com/bsideup/rx-connect",
-  "license": "MIT",
-  "repository": {
-    "url": "git@github.com:bsideup/rx-connect.git",
-    "type": "git"
-  },
-  "bugs": {
-    "url": "https://github.com/bsideup/rx-connect/issues"
-  },
   "jest": {
     "collectCoverage": true,
     "collectCoverageFrom": [
